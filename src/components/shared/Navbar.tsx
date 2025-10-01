@@ -1,0 +1,165 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useState, useMemo } from "react";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import signatureWhite from "@/assets/signature-white.png";
+import { Button } from "@/components/ui/button";
+
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const pathname = usePathname();
+
+  const toggleSideNav = () => setIsOpen(!isOpen);
+  const closeSideNav = () => setIsOpen(false);
+
+  const navLinks = useMemo(() => {
+    const links = [
+      { href: "/", title: "Home" },
+      { href: "/skills", title: "Skills" },
+      { href: "/experiences", title: "Experiences" },
+      { href: "/education", title: "Education" },
+      { href: "/blogs", title: "Blogs" },
+      { href: "/contact", title: "Contact" },
+    ];
+    if (isLoggedIn) links.push({ href: "/dashboard", title: "Dashboard" });
+    return links;
+  }, [isLoggedIn]);
+
+  return (
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={toggleSideNav}
+          />
+        )}
+      </AnimatePresence>
+
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/5 backdrop-blur-md">
+        <div className="container mx-auto px-5 md:px-8">
+          <div className="flex justify-between items-center py-4">
+            <Link href="/" onClick={closeSideNav}>
+              <Image src={signatureWhite} width={80} height={40} alt="Logo" />
+            </Link>
+
+            <div className="hidden lg:flex items-center gap-10">
+              <ul className="flex items-center gap-6">
+                {navLinks.map((link) => {
+                  const isActive =
+                    pathname === link.href || pathname.startsWith(link.href);
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="relative group uppercase text-sm tracking-wide text-white"
+                      >
+                        {link.title}
+                        <span
+                          className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${
+                            isActive
+                              ? "w-full"
+                              : "w-0 group-hover:w-full"
+                          }`}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div>
+                {isLoggedIn ? (
+                  <Button variant={"violet"} onClick={() => setIsLoggedIn(false)}>
+                    Logout
+                  </Button>
+                ) : (
+                  <Button variant={"violet"} onClick={() => setIsLoggedIn(true)}>
+                    Login
+                  </Button>
+                )}
+              </div>
+            </div>
+
+            <Button
+              variant={"transp"}
+              className="lg:hidden text-white"
+              onClick={toggleSideNav}
+              aria-label="Open Menu"
+            >
+              <Menu size={28} />
+            </Button>
+          </div>
+        </div>
+      </nav>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.aside
+            className="fixed inset-y-0 right-0 z-50 w-64 bg-[url('/background.svg')] bg-no-repeat bg-cover backdrop-blur-md lg:hidden"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.5 }}
+          >
+            <div className="flex flex-col h-full px-6 py-6">
+              <div className="flex justify-end">
+                <Button
+                  variant={"transp"}
+                  onClick={toggleSideNav}
+                  aria-label="Close Menu"
+                >
+                  <X className="text-white" size={30} />
+                </Button>
+              </div>
+              <ul className="flex flex-col items-start gap-6 mt-10">
+                {navLinks.map((link) => {
+                  const isActive =
+                    pathname === link.href || pathname.startsWith(link.href);
+                  return (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        onClick={closeSideNav}
+                        className="relative group uppercase text-sm tracking-wide text-white"
+                      >
+                        {link.title}
+                        <span
+                          className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${
+                            isActive
+                              ? "w-full"
+                              : "w-0 group-hover:w-full"
+                          }`}
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="mt-auto">
+                {isLoggedIn ? (
+                  <Button variant={"violet"} onClick={() => setIsLoggedIn(false)}>
+                    Logout
+                  </Button>
+                ) : (
+                  <Button variant={"violet"} onClick={() => setIsLoggedIn(true)}>
+                    Login
+                  </Button>
+                )}
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
+
+      <div className="pt-16" />
+    </>
+  );
+}
