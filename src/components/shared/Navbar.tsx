@@ -44,8 +44,8 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/5 backdrop-blur-md">
-        <div className="container mx-auto px-5 md:px-8">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xs">
+        <div className=" px-5 md:px-8">
           <div className="flex justify-between items-center py-4">
             <Link href="/" onClick={closeSideNav}>
               <Image src={signatureWhite} width={80} height={40} alt="Logo" />

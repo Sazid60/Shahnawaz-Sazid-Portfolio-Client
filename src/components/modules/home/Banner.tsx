@@ -1,4 +1,4 @@
-// components/Banner.tsx
+
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -16,15 +16,15 @@ export default function Banner() {
     ];
 
     return (
-        <section className="flex flex-col-reverse md:flex-row items-center justify-center text-white gap-10 container mx-auto">
+        <section className="flex flex-col-reverse xl:flex-row items-center justify-between gap-10 container mx-auto">
             <motion.div
-                className="max-w-xl text-center md:text-left space-y-6"
+                className="max-w-2xl text-center xl:text-left space-y-6 "
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <h3 className="text-violet-600 font-semibold text-lg">Fullstack Dev</h3>
-                <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                {/* <h3 className="text-violet-600 font-semibold text-lg">Fullstack Dev</h3> */}
+                <h1 className="text-2xl md:text-6xl font-extrabold leading-tight">
                     Hey! I&apos;m <br />
                     <span className="text-violet-600">Shahnawaz Sazid</span>
                 </h1>
@@ -32,11 +32,11 @@ export default function Banner() {
                     A Full Stack Web Developer passionate about building modern, scalable web applications. I work on both frontend and backend, crafting engaging user interfaces while building robust, efficient server-side systems that work seamlessly together.
                 </p>
                 <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.3, duration: 0.5 }}
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
                 >
-                    <Button variant="violet" className="mt-4">
+                    <Button variant="violet" className="mt-4 mb-8 lg:mb-0">
                         <Download size={24}/> Resume
                     </Button>
                 </motion.div>
@@ -56,7 +56,7 @@ export default function Banner() {
                     priority
                 />
                 <motion.div
-                    className="flex gap-4 mt-4"
+                    className="flex gap-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 0.8 }}
@@ -71,7 +71,7 @@ export default function Banner() {
                                 rel={Icon === Phone ? undefined : "noreferrer"}
                                 className="text-white hover:text-violet-500 transition-colors"
                             >
-                                <Icon size={32} />
+                                <Icon size={30} />
                             </a>
                         );
                     })}
