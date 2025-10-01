@@ -16,7 +16,7 @@ export default function ErrorPage({
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4">
-      <div className="max-w-md rounded-lg border bg-white p-6 shadow-sm">
+      <div className="max-w-md rounded-lg">
         <h2 className="text-xl font-semibold text-red-600">
           Something went wrong!
         </h2>

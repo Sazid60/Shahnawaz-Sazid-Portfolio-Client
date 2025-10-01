@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        violet: "bg-violet-900 border-2 border-violet-900 text-white font-light rounded-sm px-3 py-1.5 hover:bg-transparent hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] transition",
+        violet:  "bg-violet-900 border-violet-900 text-white font-light rounded-sm px-3 py-1.5 hover:bg-violet-700 transition-colors duration-200 ease-in-out",
         transp: "bg-transparent p-0",
         default:
           "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
