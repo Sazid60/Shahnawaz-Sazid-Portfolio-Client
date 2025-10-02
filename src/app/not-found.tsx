@@ -8,7 +8,7 @@ import FuzzyText from "@/components/solo-components/FuzzyText";
 export default function NotFoundPage() {
     return (
         <div className="flex min-h-screen flex-col items-center justify-center px-4">
-            <div className="max-w-md text-center">
+            <div className=" text-center flex flex-col justify-center items-center">
                 <FuzzyText
                     baseIntensity={0.2}
                     hoverIntensity={0.5} 

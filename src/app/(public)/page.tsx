@@ -7,7 +7,6 @@ export default async function HomePage() {
         <div>
             <Banner/>
             <PortfolioHero/>
-            
         </div>
     );
 }

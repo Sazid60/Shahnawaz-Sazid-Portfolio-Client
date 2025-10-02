@@ -2,20 +2,22 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import signatureWhite from "@/assets/signature-white.png";
 import { Button } from "@/components/ui/button";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   const toggleSideNav = () => setIsOpen(!isOpen);
   const closeSideNav = () => setIsOpen(false);
+
 
   const navLinks = useMemo(() => {
     const links = [
@@ -26,9 +28,9 @@ export default function Navbar() {
       { href: "/blogs", title: "Blogs" },
       { href: "/contact", title: "Contact" },
     ];
-    if (isLoggedIn) links.push({ href: "/dashboard", title: "Dashboard" });
+    if (session?.user) links.push({ href: "/dashboard", title: "Dashboard" });
     return links;
-  }, [isLoggedIn]);
+  }, [session?.user]);
 
   return (
     <>
@@ -45,8 +47,9 @@ export default function Navbar() {
       </AnimatePresence>
 
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xs">
-        <div className=" px-5 md:px-8">
+        <div className="px-5 md:px-8">
           <div className="flex justify-between items-center py-4">
+            {/* Logo */}
             <Link href="/" onClick={closeSideNav}>
               <Image src={signatureWhite} width={80} height={40} alt="Logo" />
             </Link>
@@ -65,9 +68,7 @@ export default function Navbar() {
                         {link.title}
                         <span
                           className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${
-                            isActive
-                              ? "w-full"
-                              : "w-0 group-hover:w-full"
+                            isActive ? "w-full" : "w-0 group-hover:w-full"
                           }`}
                         />
                       </Link>
@@ -76,14 +77,17 @@ export default function Navbar() {
                 })}
               </ul>
               <div>
-                {isLoggedIn ? (
-                  <Button variant={"violet"} onClick={() => setIsLoggedIn(false)}>
+                {session?.user ? (
+                  <Button
+                    variant={"violet"}
+                    onClick={() => signOut({ callbackUrl: "/" })}
+                  >
                     Logout
                   </Button>
                 ) : (
-                  <Button variant={"violet"} onClick={() => setIsLoggedIn(true)}>
-                    Login
-                  </Button>
+                  <Link href="/login">
+                    <Button variant={"violet"}>Login</Button>
+                  </Link>
                 )}
               </div>
             </div>
@@ -99,7 +103,6 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-
       <AnimatePresence>
         {isOpen && (
           <motion.aside
@@ -133,9 +136,7 @@ export default function Navbar() {
                         {link.title}
                         <span
                           className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${
-                            isActive
-                              ? "w-full"
-                              : "w-0 group-hover:w-full"
+                            isActive ? "w-full" : "w-0 group-hover:w-full"
                           }`}
                         />
                       </Link>
@@ -144,21 +145,23 @@ export default function Navbar() {
                 })}
               </ul>
               <div className="mt-auto">
-                {isLoggedIn ? (
-                  <Button variant={"violet"} onClick={() => setIsLoggedIn(false)}>
+                {session?.user ? (
+                  <Button
+                    variant={"violet"}
+                    onClick={() => signOut({ callbackUrl: "/" })}
+                  >
                     Logout
                   </Button>
                 ) : (
-                  <Button variant={"violet"} onClick={() => setIsLoggedIn(true)}>
-                    Login
-                  </Button>
+                  <Link href="/login" onClick={closeSideNav}>
+                    <Button variant={"violet"}>Login</Button>
+                  </Link>
                 )}
               </div>
             </div>
           </motion.aside>
         )}
       </AnimatePresence>
-
       <div className="pt-16" />
     </>
   );
