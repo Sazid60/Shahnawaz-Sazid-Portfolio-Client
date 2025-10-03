@@ -1,4 +1,4 @@
-import DashSkills from '@/components/solo-components/DashSkills';
+import DashSkills from '@/components/solo-components/DashSkillsCard';
 import React from 'react';
 
 const ShowSkills = async () => {

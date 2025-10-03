@@ -37,4 +37,44 @@ export const createSkill = async (data: SkillFormValues, image?: File | null) =>
     return result
 }
 
+export const deleteSkill = async (id: number) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/skill/${id}`, {
+        method: "DELETE",
+        cache: "no-store",
+    })
 
+    if (!res.ok) {
+        throw new Error((await res.text()) || "Skill deletion failed")
+    }
+
+    const result = await res.json()
+
+    revalidateTag("SKILLS")
+    revalidatePath("/skills")
+    revalidatePath("/dashboard/skills")
+
+    return result
+}
+
+
+export const updateSkill = async (id: number, data: SkillFormValues, image?: File | null) => {
+  const formData = new FormData();
+
+  if (data.skill) formData.append("skill", data.skill);
+  if (data.expertise) formData.append("expertise", data.expertise);
+  if (image) formData.append("file", image);
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/skill/${id}`, {
+    method: "PATCH",
+    body: formData,
+  });
+
+  if (!res.ok) throw new Error((await res.text()) || "Skill update failed");
+
+  const result = await res.json();
+  revalidateTag("SKILLS");
+  revalidatePath("/skills");
+  revalidatePath("/dashboard/skills");
+
+  return result;
+};
