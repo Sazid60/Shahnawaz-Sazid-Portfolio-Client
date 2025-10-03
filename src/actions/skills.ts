@@ -60,9 +60,8 @@ export const deleteSkill = async (id: number) => {
 export const updateSkill = async (id: number, data: SkillFormValues, image?: File | null) => {
   const formData = new FormData();
 
-  if (data.skill) formData.append("skill", data.skill);
-  if (data.expertise) formData.append("expertise", data.expertise);
-  if (image) formData.append("file", image);
+  formData.append("data", JSON.stringify(data));
+  if (image) formData.append("file", image); 
 
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/skill/${id}`, {
     method: "PATCH",

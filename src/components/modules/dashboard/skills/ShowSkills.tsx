@@ -1,5 +1,5 @@
 import DashSkills from '@/components/solo-components/DashSkillsCard';
-import React from 'react';
+
 
 const ShowSkills = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/skill`, {
@@ -8,6 +8,8 @@ const ShowSkills = async () => {
 
   const data = await res.json();
   const skills = data.data;
+
+  console.log(skills)
 
   return (
     <div>

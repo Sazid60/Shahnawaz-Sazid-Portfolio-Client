@@ -94,13 +94,13 @@ export default function UpdateSkillModal({ skillData }: UpdateSkillModalProps) {
                         Update Skill
                     </DialogTitle>
 
-                    {/* Existing Image */}
                     <div className="w-28 h-28 mx-auto mb-6 relative">
                         <Image
                             src={image ? URL.createObjectURL(image) : skillData.image}
                             alt={skillData.skill}
                             fill
                             className="object-contain rounded-md"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </div>
                 </DialogHeader>
@@ -149,7 +149,7 @@ export default function UpdateSkillModal({ skillData }: UpdateSkillModalProps) {
                                 <FormItem>
                                     <FormLabel>Skill Icon</FormLabel>
                                     <SingleImageUploader
-                                        currentImage={skillData.image} // show current image in uploader as well
+                                        currentImage={skillData.image} 
                                         onChange={(file: File) => {
                                             setImage(file)
                                             field.onChange(file)

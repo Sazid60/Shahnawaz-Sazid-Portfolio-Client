@@ -56,6 +56,7 @@ export default function DashSkills({ skills }: { skills: Skill[] }) {
                 alt={skill.skill}
                 fill
                 className="object-contain"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-xs">
