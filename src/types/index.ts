@@ -19,3 +19,15 @@ export type Experience = {
 export interface ShowExperienceProps {
     experiences: Experience[]
 }
+
+export interface Academic {
+  id: number;
+  degree: string;
+  institution: string;
+  startYear: string;       
+  gradYear?: string | null; 
+  achievements: string[];   
+  userId: number;
+  createdAt: string;        
+  updatedAt: string;   
+}

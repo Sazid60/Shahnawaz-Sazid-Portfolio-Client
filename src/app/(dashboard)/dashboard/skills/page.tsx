@@ -1,6 +1,11 @@
 import { AddSkillsModal } from "@/components/modules/dashboard/skills/AddSkillsModal";
 import ShowSkills from "@/components/modules/dashboard/skills/ShowSkills";
 
+export const metadata = {
+    title: "SAZID | MANAGE-SKILLS",
+    description: "Add, update, and manage your technical skills in your dashboard.",
+};
+
 export default function ManageSkills() {
     return (
         <div className="min-h-screen flex flex-col">
@@ -18,6 +23,7 @@ export default function ManageSkills() {
             <div className="flex-1 p-6">
                 <ShowSkills />
             </div>
+
         </div>
-    )
+    );
 }
