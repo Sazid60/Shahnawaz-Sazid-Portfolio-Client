@@ -26,6 +26,7 @@ const data = {
       title: "Management",
       url: "#",
       items: [
+        { title: "Profile", url: "/dashboard" },
         { title: "Manage Skills", url: "/dashboard/skills" },
         { title: "Manage Projects", url: "/dashboard/projects" },
         { title: "Manage Academics", url: "/dashboard/academics" },
