@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export type Skill = {
     id: number
     skill: string
@@ -21,13 +22,39 @@ export interface ShowExperienceProps {
 }
 
 export interface Academic {
-  id: number;
-  degree: string;
-  institution: string;
-  startYear: string;       
-  gradYear?: string | null; 
-  achievements: string[];   
-  userId: number;
-  createdAt: string;        
-  updatedAt: string;   
+    id: number;
+    degree: string;
+    institution: string;
+    startYear: string;
+    gradYear?: string | null;
+    achievements: string[];
+    userId: number;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface BlogFormValues {
+    title: string;
+    content: any;
+    tags?: string[];
+    featured?: boolean;
+    thumbnail: File | null
+}
+export interface Blog {
+    id: number;
+    title: string;
+    content: any;
+    tags?: string[];
+    featured?: boolean;
+    thumbnail: File | null,
+    views?: number
+}
+export interface BlogUpdateForm {
+    id: number;
+    title?: string;
+    content?: any;
+    tags?: string[];
+    featured?: boolean;
+    thumbnail?: File | null | string,
+    views?: number
 }
