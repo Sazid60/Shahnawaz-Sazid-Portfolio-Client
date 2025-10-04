@@ -9,7 +9,7 @@ const HomeExperience = async () => {
     const experiences = data.data;
 
     return (
-        <section className="my-8 py-5 md:py-20 lg:py-24">
+        <section className="pt-5 md:pt-20 lg:pt-24">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-left uppercase">
                 My Professional Experience
             </h2>

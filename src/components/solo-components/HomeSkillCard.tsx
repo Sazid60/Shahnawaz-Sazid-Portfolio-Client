@@ -16,7 +16,7 @@ export default function HomeSkillCard({ skills }: { skills: Skill[] }) {
             {skills.map((skill, index) => (
                 <motion.div
                     key={skill.id}
-                    className="relative bg-zinc-900/50 rounded-sm flex justify-center items-center gap-3 flex-col p-6 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-2xl transition duration-700 hover:cursor-pointer"
+                    className="relative bg-zinc-900/50 rounded-sm flex justify-center items-center gap-3 flex-col p-6 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-sm transition duration-900 "
                     data-tooltip-id="my-tooltip"
                     data-tooltip-content={skill.expertise}
                     initial={{ scale: 0.8, opacity: 0 }}

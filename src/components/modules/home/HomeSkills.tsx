@@ -9,7 +9,7 @@ const HomeSkills = async () => {
     const skills = data.data;
 
     return (
-        <section className="my-8">
+        <section className="">
             
             <h2 className="text-2xl sm:text-3xl font-bold  mb-4 text-left uppercase">
                 My Expertise
