@@ -30,7 +30,7 @@ export const uploadResume = async (file: File | null) => {
   const result = await res.json();
 
   revalidateTag("RESUME");
-  revalidatePath("/resume");
+  revalidatePath("/");
   revalidatePath("/dashboard/resume");
 
   return result;

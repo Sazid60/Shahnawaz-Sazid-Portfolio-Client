@@ -30,7 +30,7 @@ export const createSkill = async (data: SkillFormValues, image?: File | null) =>
     const result = await res.json();
     if (result) {
         revalidateTag("SKILLS")
-        revalidatePath("/skills")
+        revalidatePath("/")
         revalidatePath("/dashboard/skills")
     }
 
@@ -50,7 +50,7 @@ export const deleteSkill = async (id: number) => {
     const result = await res.json()
 
     revalidateTag("SKILLS")
-    revalidatePath("/skills")
+    revalidatePath("/")
     revalidatePath("/dashboard/skills")
 
     return result
@@ -72,7 +72,7 @@ export const updateSkill = async (id: number, data: SkillFormValues, image?: Fil
 
   const result = await res.json();
   revalidateTag("SKILLS");
-  revalidatePath("/skills");
+  revalidatePath("/");
   revalidatePath("/dashboard/skills");
 
   return result;

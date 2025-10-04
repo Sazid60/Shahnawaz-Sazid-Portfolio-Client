@@ -31,7 +31,7 @@ export default function DashBlogCard({ blogs }: DashBlogCardProps) {
       {blogs.map((blog) => (
         <div
           key={blog.id}
-          className="relative bg-white/5 rounded-md p-5 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-2xl transition duration-700 flex flex-col hover:cursor-pointer"
+          className="relative bg-zinc-900/50 rounded-md p-5 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-2xl transition duration-700 flex flex-col hover:cursor-pointer"
         >
           <div className="absolute top-9 right-9 flex gap-2 z-10">
             <UpdateBlogModal blogData={blog} />

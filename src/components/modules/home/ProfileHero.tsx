@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Card } from "@/components/ui/card";
 import { Code } from "lucide-react";
 import { motion } from "framer-motion";
@@ -11,17 +11,17 @@ export default function PortfolioHero() {
   return (
     <section className="w-full text-white px-0 py-5 md:py-20 lg:py-24">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+
         <motion.div
           className="flex items-center justify-center w-full lg:w-[30%]"
           initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
           <div className="w-full space-y-6">
             <Card className="bg-zinc-900/50 border-zinc-800 flex flex-col items-center gap-4 p-8 text-center text-white rounded-sm">
-              <div className="text-6xl md:text-7xl font-bold mb-2">
-                {experienceYears}+
-              </div>
+              <div className="text-6xl md:text-7xl font-bold mb-2">{experienceYears}+</div>
               <div className="text-lg md:text-2xl font-semibold uppercase">
                 Practicing <br /> Years
               </div>
@@ -29,9 +29,7 @@ export default function PortfolioHero() {
 
             <Card className="bg-zinc-900/50 border-zinc-800 flex flex-row items-center justify-center gap-4 p-6 text-white rounded-sm">
               <Code className="w-6 h-6 text-white" />
-              <h1 className="text-lg md:text-xl font-semibold">
-                Software Development
-              </h1>
+              <h1 className="text-lg md:text-xl font-semibold">Software Development</h1>
             </Card>
           </div>
         </motion.div>
@@ -39,7 +37,8 @@ export default function PortfolioHero() {
         <motion.div
           className="space-y-4 w-full lg:w-[70%]"
           initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-md md:text-xl lg:text-2xl font-bold leading-tight text-balance text-violet-600 uppercase">

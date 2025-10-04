@@ -35,7 +35,7 @@ export const createAcademic = async (data: AcademicFormValues) => {
   const result = await res.json();
 
   revalidateTag("ACADEMICS");
-  revalidatePath("/academics");
+  revalidatePath("/");
   revalidatePath("/dashboard/academics");
 
   return result;
@@ -61,7 +61,7 @@ export const updateAcademic = async (id: number, data: AcademicFormValues) => {
   const result = await res.json();
 
   revalidateTag("ACADEMICS");
-  revalidatePath("/academics");
+  revalidatePath("/");
   revalidatePath("/dashboard/academics");
 
   return result;
@@ -79,7 +79,7 @@ export const deleteAcademic = async (id: number) => {
   const result = await res.json();
 
   revalidateTag("ACADEMICS");
-  revalidatePath("/academics");
+  revalidatePath("/");
   revalidatePath("/dashboard/academics");
 
   return result;

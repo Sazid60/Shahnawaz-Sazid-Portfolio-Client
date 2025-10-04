@@ -14,28 +14,18 @@ export default function Banner() {
     { icon: Phone, url: "tel:+8801639768727" },
   ];
 
-
   const handleDownloadResume = async () => {
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/resume/download`, {
-        method: "GET",
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to download resume");
-      }
-
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/resume/download`, { method: "GET" });
+      if (!res.ok) throw new Error("Failed to download resume");
 
       const blob = await res.blob();
       const url = window.URL.createObjectURL(blob);
-
-
       const link = document.createElement("a");
       link.href = url;
       link.download = "Shahnawaz_Sazid_Resume.pdf";
       document.body.appendChild(link);
       link.click();
-
       link.remove();
       window.URL.revokeObjectURL(url);
     } catch (error) {
@@ -45,10 +35,12 @@ export default function Banner() {
 
   return (
     <section className="flex flex-col-reverse xl:flex-row items-center justify-between gap-10 container mx-auto">
+      
       <motion.div
-        className="max-w-2xl text-center xl:text-left space-y-6 "
+        className="max-w-2xl text-center xl:text-left space-y-6"
         initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: 0.3 }} 
         transition={{ duration: 0.8 }}
       >
         <h1 className="text-2xl md:text-6xl font-extrabold leading-tight">
@@ -63,7 +55,8 @@ export default function Banner() {
         </p>
         <motion.div
           initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
           <Button
@@ -79,7 +72,8 @@ export default function Banner() {
       <motion.div
         className="flex flex-col items-center gap-4"
         initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ amount: 0.3 }}
         transition={{ duration: 0.8 }}
       >
         <Image
@@ -93,7 +87,8 @@ export default function Banner() {
         <motion.div
           className="flex gap-4"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ amount: 0.3 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           {socialLinks.map((social, index) => {
@@ -112,6 +107,7 @@ export default function Banner() {
           })}
         </motion.div>
       </motion.div>
+
     </section>
   );
 }

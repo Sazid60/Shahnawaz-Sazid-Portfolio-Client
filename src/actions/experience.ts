@@ -32,7 +32,7 @@ export const createExperience = async (
 
   const result = await res.json();
   revalidateTag("EXPERIENCES");
-  revalidatePath("/experiences");
+  revalidatePath("/");
   revalidatePath("/dashboard/experiences");
 
   return result;
@@ -58,7 +58,7 @@ export const updateExperience = async (
 
   const result = await res.json();
   revalidateTag("EXPERIENCES");
-  revalidatePath("/experiences");
+  revalidatePath("/");
   revalidatePath("/dashboard/experiences");
 
   return result;
@@ -75,7 +75,7 @@ export const deleteExperience = async (id: number) => {
 
   const result = await res.json();
   revalidateTag("EXPERIENCES");
-  revalidatePath("/experiences");
+  revalidatePath("/");
   revalidatePath("/dashboard/experiences");
 
   return result;
