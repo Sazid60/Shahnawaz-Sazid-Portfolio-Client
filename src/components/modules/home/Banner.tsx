@@ -58,6 +58,7 @@ export default function Banner() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ amount: 0.3 }}
           transition={{ duration: 0.8 }}
+          className="flex justify-center xl:justify-start items-center"
         >
           <Button
             variant="violet"
