@@ -1,4 +1,5 @@
 import Banner from "@/components/modules/home/Banner";
+import HomeExperience from "@/components/modules/home/HomeExperience";
 import HomeSkills from "@/components/modules/home/HomeSkills";
 import PortfolioHero from "@/components/modules/home/ProfileHero";
 
@@ -9,6 +10,7 @@ export default async function HomePage() {
             <Banner/>
             <PortfolioHero/>
             <HomeSkills/>
+            <HomeExperience/>
         </div>
     );
 }

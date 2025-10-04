@@ -10,6 +10,7 @@ const HomeSkills = async () => {
 
     return (
         <section className="my-8">
+            
             <h2 className="text-2xl sm:text-3xl font-bold  mb-4 text-left uppercase">
                 My Expertise
             </h2>
@@ -17,7 +18,7 @@ const HomeSkills = async () => {
                 A showcase of my technical skills and expertise.
             </p>
 
-            <div>
+            <div className="mt-15">
                 <HomeSkillCard skills={skills} />
             </div>
         </section>
