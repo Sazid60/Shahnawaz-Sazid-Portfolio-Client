@@ -8,7 +8,7 @@ import { useEffect } from "react"
 import Image from "next/image"
 
 export default function SingleImageUploader({ onChange }: any) {
-  const maxSizeMB = 10
+  const maxSizeMB = 1
   const maxSize = maxSizeMB * 1024 * 1024 
 
   const [
@@ -108,20 +108,6 @@ export default function SingleImageUploader({ onChange }: any) {
           <span>{errors[0]}</span>
         </div>
       )}
-
-      <p
-        aria-live="polite"
-        role="region"
-        className="text-muted-foreground mt-2 text-center text-xs"
-      >
-        Single image uploader w/ max size ∙{" "}
-        <a
-          href="https://github.com/origin-space/originui/tree/main/docs/use-file-upload.md"
-          className="hover:text-foreground underline"
-        >
-          API
-        </a>
-      </p>
     </div>
   )
 }

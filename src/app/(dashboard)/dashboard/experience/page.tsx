@@ -20,7 +20,7 @@ export default function ManageExperience() {
                 <AddExperienceModal />
             </div>
 
-            <div className="flex-1 p-6">
+            <div className="flex-1">
                 <ShowExperience />
             </div>
 

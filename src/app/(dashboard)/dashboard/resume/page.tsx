@@ -12,7 +12,7 @@ export default function ManageResume() {
         <div className="min-h-screen flex flex-col">
             <AddResumeSegment />
 
-            <div className="flex-1 p-6">
+            <div className="flex-1">
                 <ResumeViewer/>
             </div>
 

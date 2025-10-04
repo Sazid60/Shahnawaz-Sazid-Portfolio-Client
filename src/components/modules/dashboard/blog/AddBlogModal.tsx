@@ -110,7 +110,6 @@ export default function AddBlogModal() {
                 <Form {...form}>
                     <form id="add-blog" className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
 
-                        {/* Title */}
                         <FormField
                             control={control}
                             name="title"
@@ -139,8 +138,6 @@ export default function AddBlogModal() {
                                 </FormItem>
                             )}
                         />
-
-                        {/* Content */}
                         <FormItem>
                             <FormLabel>Content</FormLabel>
                             <Controller
@@ -177,24 +174,13 @@ export default function AddBlogModal() {
                         </FormItem>
 
                         {/* Thumbnail */}
-                        {/* <FormField
-                            control={control}
-                            name="thumbnail"
-                            render={() => (
-                                <FormItem>
-                                    <FormLabel>Thumbnail</FormLabel>
-                                    <SingleImageUploader onChange={(file: File) => setThumbnail(file)} />
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        /> */}
 
                         <FormField
                             control={form.control}
                             name="thumbnail"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Company Logo</FormLabel>
+                                    <FormLabel>Thumbnail</FormLabel>
                                     <SingleImageUploader
                                         onChange={(file: File) => {
                                             setThumbnail(file)

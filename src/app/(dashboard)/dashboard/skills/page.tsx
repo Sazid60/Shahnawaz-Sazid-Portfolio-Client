@@ -20,7 +20,7 @@ export default function ManageSkills() {
                 <AddSkillsModal />
             </div>
 
-            <div className="flex-1 p-6">
+            <div className="flex-1">
                 <ShowSkills />
             </div>
 
