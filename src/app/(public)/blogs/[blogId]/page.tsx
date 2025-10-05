@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { BackButton } from "@/components/solo-components/BackButton";
+import { Metadata } from "next";
 
 interface BlogDetailsPageProps {
   params: {
@@ -27,29 +28,10 @@ export const generateStaticParams = async () => {
 
 
 
-
-// export async function generateMetadata({ params }: BlogDetailsPageProps) {
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${params.blogId}`);
-//   if (!res.ok) {
-//     return {
-//       title: "Blog Not Found",
-//       description: "This blog could not be loaded.",
-//     };
-//   }
-//   const data = await res.json();
-//   const blog = data.data;
-
-//   return {
-//     title: `Blog | ${blog.title}`,
-//     description: blog.excerpt || blog.content.slice(0, 160).replace(/<\/?[^>]+(>|$)/g, ""),
-//     openGraph: {
-//       title: blog.title,
-//       description: blog.excerpt || blog.content.slice(0, 160).replace(/<\/?[^>]+(>|$)/g, ""),
-//       images: blog.thumbnail ? [{ url: blog.thumbnail }] : [],
-//     },
-//   };
-// }
-
+export const metadata: Metadata = {
+    title: "SHAHNAWAZ SAZID | BLOGS DETAILS",
+    description: "Insights, tutorials, and thoughts I’ve shared along my journey.",
+};
 const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
   const { blogId } = await params;
 

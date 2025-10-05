@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ExternalLink, Server, Laptop, Layers } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 
 interface Project {
   id: number;
@@ -28,11 +29,19 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
 
   return (
     <div className="grid gap-8 grid-cols-1 xl:grid-cols-2">
-      {projects.map((project) => (
-        <div
+      {projects.map((project, index) => (
+        <motion.div
           key={project.id}
           role="button"
           onClick={() => router.push(`/projects/${project.id}`)}
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{
+            delay: index * 0.1,
+            duration: 0.6,
+            ease: "easeOut",
+          }}
+          viewport={{ once: true, amount: 0.2 }}
           className="cursor-pointer relative bg-zinc-900/50 rounded-sm p-4 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-2xl transition duration-700"
         >
           <div className="flex justify-center items-center w-full rounded-sm">
@@ -159,7 +168,7 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
