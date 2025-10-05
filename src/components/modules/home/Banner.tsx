@@ -62,7 +62,7 @@ export default function Banner() {
         >
           <Button
             variant="violet"
-            className="mt-4 mb-8 lg:mb-0 flex items-center gap-2"
+            className="my-4 md:my-8 lg:mb-0 flex items-center gap-2"
             onClick={handleDownloadResume}
           >
             <Download size={20} /> Resume

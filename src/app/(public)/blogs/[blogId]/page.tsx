@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import React from "react";
 import { BackButton } from "@/components/solo-components/BackButton";
@@ -9,45 +10,51 @@ interface BlogDetailsPageProps {
 }
 
 
-export async function generateStaticParams() {
+
+
+export const generateStaticParams = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`);
-  const data = await res.json();
-  const blogs = data.data;
 
-  return blogs.map((blog: { id: string }) => ({
-    blogId: blog.id.toString(),
+  if (!res.ok) return [];
+
+  const json = await res.json();
+  const blogs = Array.isArray(json.data) ? json.data : json;
+
+  return blogs.map((blog: any) => ({
+    blogId: String(blog.id),
   }));
-}
+};
 
 
-export async function generateMetadata({ params }: BlogDetailsPageProps) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${params.blogId}`);
-  if (!res.ok) {
-    return {
-      title: "Blog Not Found",
-      description: "This blog could not be loaded.",
-    };
-  }
-  const data = await res.json();
-  const blog = data.data;
 
-  return {
-    title: `Blog | ${blog.title}`,
-    description: blog.excerpt || blog.content.slice(0, 160).replace(/<\/?[^>]+(>|$)/g, ""),
-    openGraph: {
-      title: blog.title,
-      description: blog.excerpt || blog.content.slice(0, 160).replace(/<\/?[^>]+(>|$)/g, ""),
-      images: blog.thumbnail ? [{ url: blog.thumbnail }] : [],
-    },
-  };
-}
+
+// export async function generateMetadata({ params }: BlogDetailsPageProps) {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${params.blogId}`);
+//   if (!res.ok) {
+//     return {
+//       title: "Blog Not Found",
+//       description: "This blog could not be loaded.",
+//     };
+//   }
+//   const data = await res.json();
+//   const blog = data.data;
+
+//   return {
+//     title: `Blog | ${blog.title}`,
+//     description: blog.excerpt || blog.content.slice(0, 160).replace(/<\/?[^>]+(>|$)/g, ""),
+//     openGraph: {
+//       title: blog.title,
+//       description: blog.excerpt || blog.content.slice(0, 160).replace(/<\/?[^>]+(>|$)/g, ""),
+//       images: blog.thumbnail ? [{ url: blog.thumbnail }] : [],
+//     },
+//   };
+// }
 
 const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
-  const { blogId } = params;
+  const { blogId } = await params;
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${blogId}`, {
-    next: { tags: ["BLOGS"],  },
-  });
+ const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${blogId}`);
+
 
   if (!res.ok) {
     return (
@@ -68,9 +75,9 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
       <div className="mb-3">
         <BackButton />
       </div>
-      <article className=" border rounded-sm text-gray-100 p-2 md:p-6">
+      <article className=" border rounded-sm text-gray-100 p-2 md:p-6 bg-zinc-900/50 ">
         {blog.thumbnail && (
-          <div className="relative w-full h-[100px] md:h-[520px] mb-10 rounded-sm overflow-hidden group">
+          <div className="relative w-full h-[300px] md:h-[520px] mb-10 rounded-sm overflow-hidden group">
             <Image
               src={blog.thumbnail}
               alt={blog.title}
@@ -84,7 +91,7 @@ const BlogDetailsPage = async ({ params }: BlogDetailsPageProps) => {
         )}
 
         <header className="mb-8 text-center">
-          <h1 className="text-xl md:text-5xl font-extrabold text-white leading-tight tracking-tight mb-4">
+          <h1 className="text-lg md:text-3xl font-extrabold text-white leading-tight tracking-tight mb-4">
             {blog.title}
           </h1>
 

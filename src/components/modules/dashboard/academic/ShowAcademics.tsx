@@ -1,14 +1,34 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import DashAcademics from '@/components/solo-components/DashAcademicsCard';
 
 const ShowAcademics = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/academic`, {
-    next: { tags: ["ACADEMICS"] },
-  });
+  let academics: any[] = [];
 
-  const data = await res.json();
-  const academics = data.data;
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/academic`);
 
-  console.log(academics);
+    if (!res.ok) {
+      console.error("Failed to fetch academics:", res.status, res.statusText);
+    } else {
+      const data = await res.json();
+      academics = data?.data ?? [];
+    }
+  } catch (err) {
+    console.error("Error fetching academics:", err);
+  }
+
+  if (academics.length < 1) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[40vh] text-center">
+        <h2 className="text-2xl font-semibold text-gray-400 mb-2">
+          No Academic Records Found
+        </h2>
+        <p className="text-gray-500">
+          Academic records will appear here once added.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div>

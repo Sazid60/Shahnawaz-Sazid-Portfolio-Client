@@ -1,16 +1,21 @@
 import React from "react";
 
 const ShowResume = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/resume`, {
-    next: { tags: ["RESUME"] },
-  });
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let resume: any = null;
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch resume");
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/resume`);
+
+    if (!res.ok) {
+      console.error("Failed to fetch resume:", res.status, res.statusText);
+    } else {
+      const data = await res.json();
+      resume = data?.data ?? null;
+    }
+  } catch (err) {
+    console.error("Error fetching resume:", err);
   }
-
-  const data = await res.json();
-  const resume = data.data;
 
   return (
     <div className="w-full flex flex-col items-center justify-center mt-6">

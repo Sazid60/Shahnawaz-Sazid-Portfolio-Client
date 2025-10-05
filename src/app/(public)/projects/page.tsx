@@ -7,9 +7,10 @@ export const metadata: Metadata = {
 };
 
 const MyProjects = async () => {
-
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
-    next: { tags: ["PROJECTS"] },
+    next: {
+      tags: ["PROJECTS"]
+    },
   });
 
   if (!res.ok) {
@@ -24,7 +25,18 @@ const MyProjects = async () => {
   }
 
   const data = await res.json();
-  const projects = data.data;
+  const projects = data?.data ?? [];
+
+  if (projects.length < 1) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[60vh] text-center">
+        <h2 className="text-2xl font-semibold text-gray-400 mb-2">
+          No Projects Found
+        </h2>
+        <p className="text-gray-500">Projects will appear here once added.</p>
+      </div>
+    );
+  }
 
   return (
     <section className="mb-5 md:mb-20 lg:mb-24">

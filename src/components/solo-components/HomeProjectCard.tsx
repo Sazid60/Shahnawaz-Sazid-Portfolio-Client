@@ -39,14 +39,14 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
             <Image
               src={project.thumbnail}
               alt={project.title}
-              className="rounded-sm h-[200px] md:h-[400px] w-full object-cover object-top hover:object-bottom transition-all duration-[9000ms] ease-in-out"
+              className="rounded-sm h-[300px] md:h-[400px] w-full object-cover object-top hover:object-bottom transition-all duration-[9000ms] ease-in-out"
               width={700}
               height={50}
             />
           </div>
 
           <div className="md:p-3">
-            <h1 className="text-left text-lg md:text-xl lg:text-2xl font-bold mt-3 md:mt-6">
+            <h1 className="text-left text-xl lg:text-2xl font-bold mt-3 md:mt-6">
               <span className="text-violet-600">{project.title.split("-")[0]}</span>
               {project.title.includes("-") && " - "}
               <span className="text-white">{project.title.split("-")[1]}</span>

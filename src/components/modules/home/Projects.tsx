@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // ShadCN Tabs
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; 
 import HomeProjectCard from "@/components/solo-components/HomeProjectCard";
 
 interface Project {
@@ -37,7 +37,7 @@ export default function Projects({ projects }: ProjectsProps) {
     return (
         <div className="mt-8 md:mt-16">
             <Tabs value={tab} onValueChange={setTab} className="space-y-4">
-                <TabsList className="grid grid-cols-4 bg-transparent border rounded-sm">
+                <TabsList className="grid grid-cols-4 bg-transparent border rounded-sm w-full md:max-w-sm">
                     {categories.map((category) => (
                         <TabsTrigger
                             key={category}

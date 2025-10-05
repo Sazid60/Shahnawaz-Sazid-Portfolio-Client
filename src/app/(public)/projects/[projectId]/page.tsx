@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image from "next/image";
 import { ExternalLink, Server, Laptop, Layers } from "lucide-react";
 import Link from "next/link";
@@ -9,45 +10,75 @@ interface ProjectDetailsPageProps {
     };
 }
 
-export async function generateStaticParams() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
-    const data = await res.json();
-    const projects = data.data;
+// export async function generateStaticParams() {
+//   try {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
+//     if (!res.ok) {
+//       console.error("Failed to fetch projects:", res.status, await res.text());
+//       return [];
+//     }
+//     const data = await res.json();
+//     return (data.data || []).slice(0, 2).map((project: any) => ({
+//       projectId: String(project.id),
+//     }));
+//   } catch (error) {
+//     console.error("generateStaticParams error:", error);
+//     return [];
+//   }
+// }
 
-    return projects.map((project: { id: string }) => ({
-        projectId: project.id.toString(),
-    }));
-}
+// export const generateStaticParams = async () => {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
+//     const { data: projects } = await res.json();
 
-export async function generateMetadata({ params }: ProjectDetailsPageProps) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/${params.projectId}`);
-    if (!res.ok) {
-        return {
-            title: "Project Not Found",
-            description: "This project could not be loaded.",
-        };
-    }
+//     return projects.map((project: any) => ({
+//         projectId: String(project.id),
+//     }));
+// };
 
-    const data = await res.json();
-    const project = data.data;
+export const generateStaticParams = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
 
-    return {
-        title: `Project | ${project.title}`,
-        description: project.description?.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 160),
-        openGraph: {
-            title: project.title,
-            description: project.description?.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 160),
-            images: project.thumbnail ? [{ url: project.thumbnail }] : [],
-        },
-    };
-}
+  if (!res.ok) return [];
+
+  const json = await res.json();
+  const projects = Array.isArray(json.data) ? json.data : json;
+
+  return projects.map((project: any) => ({
+    projectId: String(project.id),
+  }));
+};
+
+
+
+
+// export async function generateMetadata({ params }: ProjectDetailsPageProps) {
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/${params.projectId}`);
+//     if (!res.ok) {
+//         return {
+//             title: "Project Not Found",
+//             description: "This project could not be loaded.",
+//         };
+//     }
+
+//     const data = await res.json();
+//     const project = data.data;
+
+//     return {
+//         title: `Project | ${project.title}`,
+//         description: project.description?.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 160),
+//         openGraph: {
+//             title: project.title,
+//             description: project.description?.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 160),
+//             images: project.thumbnail ? [{ url: project.thumbnail }] : [],
+//         },
+//     };
+// }
 
 export default async function ProjectDetailsPage({ params }: ProjectDetailsPageProps) {
-    const { projectId } = params;
+    const { projectId } = await params;
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/${projectId}`, {
-        next: { tags: ["PROJECTS"] },
-    });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/${projectId}`);
 
     if (!res.ok) {
         return (
@@ -69,7 +100,7 @@ export default async function ProjectDetailsPage({ params }: ProjectDetailsPageP
                 <BackButton />
             </div>
 
-            <div className="relative bg-zinc-900/50 rounded-sm p-4 md:p-6 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-2xl transition duration-700">
+            <div className="relative bg-zinc-900/50 rounded-sm p-4 md:p-6  shadow-2xl transition duration-700">
                 <div className="flex justify-center items-center w-full rounded-sm">
                     <Image
                         src={project.thumbnail}
@@ -81,7 +112,7 @@ export default async function ProjectDetailsPage({ params }: ProjectDetailsPageP
                 </div>
 
                 <div className="md:p-3">
-                    <h1 className="text-left text-lg md:text-2xl lg:text-3xl font-bold mt-3 md:mt-6">
+                    <h1 className="text-left text-2xl lg:text-3xl font-bold mt-3 md:mt-6">
                         <span className="text-violet-600">{project.title.split("-")[0]}</span>
                         {project.title.includes("-") && " - "}
                         <span className="text-white">{project.title.split("-")[1]}</span>

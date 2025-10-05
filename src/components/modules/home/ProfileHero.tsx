@@ -9,13 +9,13 @@ export default function PortfolioHero() {
   const experienceYears = currentYear - startYear;
 
   return (
-    <section className="w-full text-white px-0 py-5 md:py-20 lg:py-24">
+    <section className="w-full text-white px-0 py-8 md:py-20 lg:py-24">
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
 
         <motion.div
           className="flex items-center justify-center w-full lg:w-[30%]"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >
@@ -36,8 +36,8 @@ export default function PortfolioHero() {
 
         <motion.div
           className="space-y-4 w-full lg:w-[70%]"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.8 }}
         >

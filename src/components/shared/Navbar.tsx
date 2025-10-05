@@ -93,7 +93,7 @@ export default function Navbar() {
 
             <Button
               variant={"transp"}
-              className="lg:hidden text-white"
+              className="lg:hidden text-white px-0"
               onClick={toggleSideNav}
               aria-label="Open Menu"
             >
@@ -124,7 +124,9 @@ export default function Navbar() {
               <ul className="flex flex-col items-start gap-6 mt-10">
                 {navLinks.map((link) => {
                   const isActive =
-                    pathname === link.href || pathname.startsWith(link.href);
+                    link.href === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(link.href);
                   return (
                     <li key={link.href}>
                       <Link
@@ -142,7 +144,7 @@ export default function Navbar() {
                   );
                 })}
               </ul>
-              <div className="mt-auto">
+              <div className="mt-10">
                 {session?.user ? (
                   <Button
                     variant={"violet"}
