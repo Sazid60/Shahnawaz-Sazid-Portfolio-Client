@@ -124,7 +124,6 @@ export default function AddBlogModal() {
                             )}
                         />
 
-                        {/* Tags */}
                         <FormField
                             control={control}
                             name="tags"
@@ -172,8 +171,6 @@ export default function AddBlogModal() {
                                 <p className="text-red-500 text-sm mt-1">{errors.content.message}</p>
                             )}
                         </FormItem>
-
-                        {/* Thumbnail */}
 
                         <FormField
                             control={form.control}

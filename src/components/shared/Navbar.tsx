@@ -47,7 +47,7 @@ export default function Navbar() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xs">
         <div className="px-5 md:px-8">
           <div className="flex justify-between items-center py-4">
-            {/* Logo */}
+
             <Link href="/" onClick={closeSideNav}>
               <Image src={signatureWhite} width={80} height={40} alt="Logo" />
             </Link>
@@ -56,7 +56,9 @@ export default function Navbar() {
               <ul className="flex items-center gap-6">
                 {navLinks.map((link) => {
                   const isActive =
-                    pathname === link.href || pathname.startsWith(link.href);
+                    link.href === "/"
+                      ? pathname === "/"
+                      : pathname.startsWith(link.href);
                   return (
                     <li key={link.href}>
                       <Link
@@ -65,9 +67,8 @@ export default function Navbar() {
                       >
                         {link.title}
                         <span
-                          className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${
-                            isActive ? "w-full" : "w-0 group-hover:w-full"
-                          }`}
+                          className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                            }`}
                         />
                       </Link>
                     </li>
@@ -133,9 +134,8 @@ export default function Navbar() {
                       >
                         {link.title}
                         <span
-                          className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${
-                            isActive ? "w-full" : "w-0 group-hover:w-full"
-                          }`}
+                          className={`absolute left-0 -bottom-0.5 h-[2px] bg-violet-600 transition-all duration-500 ${isActive ? "w-full" : "w-0 group-hover:w-full"
+                            }`}
                         />
                       </Link>
                     </li>

@@ -121,3 +121,10 @@
   }
 }
 
+.prose img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0.2rem; 
+  margin-top: 10px;
+}

@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { deleteBlog as deleteBlogAction } from "@/actions/blog";
 import { Blog } from "@/types";
 import UpdateBlogModal from "../modules/dashboard/blog/UpdateBlogModal";
-// import UpdateBlogModal from "@/components/modules/dashboard/blog/UpdateBlogModal";
+
 
 interface DashBlogCardProps {
   blogs: Blog[];
