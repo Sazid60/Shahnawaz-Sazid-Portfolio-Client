@@ -140,7 +140,7 @@ export default function AddProjectModal() {
                                     <FormItem>
                                         <FormLabel>Category</FormLabel>
                                         <FormControl>
-                                            <Input {...field} placeholder="Backend | Frontend | Electronics" />
+                                            <Input {...field} placeholder="Fullstack | Frontend | Electronics" />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

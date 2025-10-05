@@ -125,7 +125,7 @@ export default function UpdateProjectModal({ projectData }: UpdateProjectModalPr
               <FormField control={control} name="category" render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category</FormLabel>
-                  <FormControl><Input {...field} placeholder="Backend | Frontend | Electronics" /></FormControl>
+                  <FormControl><Input {...field} placeholder="Fullstack | Frontend | Electronics" /></FormControl>
                   <FormMessage />
                 </FormItem>
               )}/>

@@ -58,7 +58,7 @@ export default function DashProjectCard({ projects }: DashProjectCardProps) {
                         <Image
                             src={project.thumbnail}
                             alt={project.title}
-                            className="rounded-sm h-[200px] md:h-[400px] w-full object-cover object-top hover:object-bottom transition-all duration-[5000ms] ease-in-out"
+                            className="rounded-sm h-[200px] md:h-[400px] w-full object-cover object-top hover:object-bottom transition-all duration-[9000ms] ease-in-out"
                             width={700}
                             height={50}
                         />
