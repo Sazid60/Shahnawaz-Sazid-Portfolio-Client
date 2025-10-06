@@ -11,7 +11,7 @@ const HomeSkills = async () => {
       console.error("Failed to fetch skills:", res.status, res.statusText);
     } else {
       const data = await res.json();
-      skills = data?.data ?? [];
+      skills = data?.data?.reverse() ?? [];
     }
   } catch (err) {
     console.error("Error fetching skills:", err);

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ExternalLink, Server, Laptop, Layers } from "lucide-react";
 import Link from "next/link";
 import { BackButton } from "@/components/solo-components/BackButton";
+import { Metadata } from "next";
 
 interface ProjectDetailsPageProps {
     params: {
@@ -10,31 +11,6 @@ interface ProjectDetailsPageProps {
     };
 }
 
-// export async function generateStaticParams() {
-//   try {
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
-//     if (!res.ok) {
-//       console.error("Failed to fetch projects:", res.status, await res.text());
-//       return [];
-//     }
-//     const data = await res.json();
-//     return (data.data || []).slice(0, 2).map((project: any) => ({
-//       projectId: String(project.id),
-//     }));
-//   } catch (error) {
-//     console.error("generateStaticParams error:", error);
-//     return [];
-//   }
-// }
-
-// export const generateStaticParams = async () => {
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
-//     const { data: projects } = await res.json();
-
-//     return projects.map((project: any) => ({
-//         projectId: String(project.id),
-//     }));
-// };
 
 export const generateStaticParams = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`);
@@ -50,30 +26,10 @@ export const generateStaticParams = async () => {
 };
 
 
-
-
-// export async function generateMetadata({ params }: ProjectDetailsPageProps) {
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project/${params.projectId}`);
-//     if (!res.ok) {
-//         return {
-//             title: "Project Not Found",
-//             description: "This project could not be loaded.",
-//         };
-//     }
-
-//     const data = await res.json();
-//     const project = data.data;
-
-//     return {
-//         title: `Project | ${project.title}`,
-//         description: project.description?.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 160),
-//         openGraph: {
-//             title: project.title,
-//             description: project.description?.replace(/<\/?[^>]+(>|$)/g, "").slice(0, 160),
-//             images: project.thumbnail ? [{ url: project.thumbnail }] : [],
-//         },
-//     };
-// }
+export const metadata: Metadata = {
+  title: "SHAHNAWAZ SAZID | PROJECTS DETAILS",
+  description: "Showcasing my projects, tutorials, and insights along my journey.",
+};
 
 export default async function ProjectDetailsPage({ params }: ProjectDetailsPageProps) {
     const { projectId } = await params;
