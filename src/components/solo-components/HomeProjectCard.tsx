@@ -27,6 +27,8 @@ interface DashProjectCardProps {
 export default function HomeProjectCard({ projects }: DashProjectCardProps) {
   const router = useRouter();
 
+  const iconClass = "w-5 h-5 mt-1 flex-shrink-0";
+
   return (
     <div className="grid gap-8 grid-cols-1 xl:grid-cols-2">
       {projects.map((project, index) => (
@@ -68,29 +70,31 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
               />
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-0 mt-6">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Layers size={30} />
+            <div className="flex flex-col md:flex-row justify-between gap-4 mt-6">
+              <div className="space-y-4 w-full lg:max-w-[60%]">
+                <div className="flex items-start gap-3">
+                  <Layers className={iconClass} />
                   <div>
                     <p className="font-semibold text-sm">CATEGORY</p>
                     <p className="text-xs md:text-sm font-extralight">{project.category}</p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <Laptop size={30} />
+                <div className="flex items-start gap-3">
+                  <Laptop className={iconClass} />
                   <div>
                     <p className="font-semibold text-sm">FRONTEND TECHNOLOGIES</p>
-                    <p className="text-xs md:text-sm font-extralight">{project.frontendTechs}</p>
+                    <p className="text-xs md:text-sm font-extralight break-words">
+                      {project.frontendTechs}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <Server size={30} />
+                <div className="flex items-start gap-3">
+                  <Server className={iconClass} />
                   <div>
                     <p className="font-semibold text-sm">BACKEND TECHNOLOGIES</p>
-                    <p className="text-xs md:text-sm font-extralight">
+                    <p className="text-xs md:text-sm font-extralight break-words">
                       {project.backendTechs || "N/A"}
                     </p>
                   </div>
@@ -99,8 +103,8 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
 
               <div className="space-y-4">
                 {project.frontendRepo && (
-                  <div className="flex items-center gap-3">
-                    <Laptop size={30} />
+                  <div className="flex items-start gap-3">
+                    <Laptop className={iconClass} />
                     <div>
                       <p className="font-semibold text-sm">FRONTEND REPO</p>
                       <Link
@@ -109,15 +113,15 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
                         onClick={(e) => e.stopPropagation()}
                         className="text-xs md:text-sm font-light text-violet-600 hover:text-white/65 flex items-center gap-2"
                       >
-                        View <ExternalLink size={18} />
+                        View <ExternalLink size={13} />
                       </Link>
                     </div>
                   </div>
                 )}
 
                 {project.backendRepo && (
-                  <div className="flex items-center gap-3">
-                    <Server size={30} />
+                  <div className="flex items-start gap-3">
+                    <Server className={iconClass} />
                     <div>
                       <p className="font-semibold text-sm">BACKEND REPO</p>
                       <Link
@@ -133,8 +137,8 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
                 )}
 
                 {project.liveUrl && (
-                  <div className="flex items-center gap-3">
-                    <ExternalLink size={30} />
+                  <div className="flex items-start gap-3">
+                    <ExternalLink className={iconClass} />
                     <div>
                       <p className="font-semibold text-sm">LIVE LINK</p>
                       <Link
@@ -150,8 +154,8 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
                 )}
 
                 {project.ieeeUrl && (
-                  <div className="flex items-center gap-3">
-                    <ExternalLink size={30} />
+                  <div className="flex items-start gap-3">
+                    <ExternalLink className={iconClass} />
                     <div>
                       <p className="font-semibold text-sm">IEEE URL</p>
                       <Link
