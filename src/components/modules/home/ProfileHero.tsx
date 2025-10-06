@@ -20,14 +20,14 @@ export default function PortfolioHero() {
           transition={{ duration: 0.8 }}
         >
           <div className="w-full space-y-6">
-            <Card className="bg-zinc-900/50 border-zinc-800 flex flex-col items-center gap-4 p-8 text-center text-white rounded-sm hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-sm transition duration-900">
+            <Card className="bg-zinc-900/50 border-zinc-800 flex flex-col items-center gap-4 p-8 text-center text-white rounded-sm hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-xl transition duration-900">
               <div className="text-6xl md:text-7xl font-bold mb-2">{experienceYears}+</div>
               <div className="text-lg md:text-2xl font-semibold uppercase">
                 Practicing <br /> Years
               </div>
             </Card>
 
-            <Card className="bg-zinc-900/50 border-zinc-800 flex flex-row items-center justify-center gap-4 p-6 text-white rounded-sm hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-sm transition duration-900">
+            <Card className="bg-zinc-900/50 border-zinc-800 flex flex-row items-center justify-center gap-4 p-6 text-white rounded-sm hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-xl transition duration-900">
               <Code className="w-6 h-6 text-white" />
               <h1 className="text-lg md:text-xl font-semibold">Software Development</h1>
             </Card>

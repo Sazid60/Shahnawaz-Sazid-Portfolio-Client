@@ -33,7 +33,7 @@ export default function HomeBlogCard({ blogs }: DashBlogCardProps) {
         >
           <Link
             href={`/blogs/${blog.id}`}
-            className="relative bg-zinc-900/50 rounded-sm p-5 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-2xl transition duration-700 flex flex-col hover:cursor-pointer group"
+            className="relative bg-zinc-900/50 rounded-sm p-5 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-xl transition duration-700 flex flex-col hover:cursor-pointer group"
           >
             {typeof blog.thumbnail === "string" && blog.thumbnail !== "" && (
               <div className="relative w-full h-56 overflow-hidden rounded-sm">

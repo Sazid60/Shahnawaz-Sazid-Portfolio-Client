@@ -17,7 +17,7 @@ export default function HomeEducationCard({ academics }: { academics: Academic[]
             delay: i * 0.1,
             ease: "easeOut",
           }}
-          className="relative bg-zinc-900/50  rounded-md p-6 flex flex-col hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-sm transition duration-900"
+          className="relative bg-zinc-900/50  rounded-md p-6 flex flex-col hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-xl transition duration-900"
         >
           <div className="flex flex-col gap-3 mt-4 space-y-2">
             <div>

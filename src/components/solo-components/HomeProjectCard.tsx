@@ -44,7 +44,7 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
             ease: "easeOut",
           }}
           viewport={{ once: true, amount: 0.2 }}
-          className="cursor-pointer relative bg-zinc-900/50 rounded-sm p-4 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-2xl transition duration-700"
+          className="cursor-pointer relative bg-zinc-900/50 rounded-sm p-4 hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-xl transition duration-700"
         >
           <div className="flex justify-center items-center w-full rounded-sm">
             <Image
