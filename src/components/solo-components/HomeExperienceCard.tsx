@@ -24,7 +24,7 @@ export default function HomeExperienceCard({ experiences }: HomeExperienceCardPr
                 return (
                     <motion.div
                         key={exp.id}
-                        className={`relative bg-zinc-900/50  rounded-md p-6 flex flex-col hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-sm transition duration-900 ${isFullWidth ? "md:col-span-2" : ""}`}
+                        className={`relative bg-zinc-900/50  rounded-md p-6 flex flex-col hover:shadow-[0_0_10px_2px_rgba(139,92,246,0.7)] shadow-xl transition duration-900 ${isFullWidth ? "md:col-span-2" : ""}`}
                         initial={{ opacity: 0, y: -50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: false, amount: 0.3 }}
