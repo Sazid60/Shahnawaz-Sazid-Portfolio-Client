@@ -124,7 +124,7 @@ It showcases my skills, projects, experience, and blogs, with a private admin da
 #### Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/b5a7-portfolio-frontend.git
+git clone https://github.com/Sazid60/Shahnawaz-Sazid-Portfolio-Client
 
 # 2️⃣ Navigate into the project
 cd b5a7-portfolio-frontend
