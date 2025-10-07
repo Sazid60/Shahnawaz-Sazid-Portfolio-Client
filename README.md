@@ -5,6 +5,10 @@
 This is the frontend for the Portfolio project a modern, dynamic, and responsive portfolio web application.
 It showcases my skills, projects, experience, and blogs, with a private admin dashboard for content management. My Portfolio Website built on Next.js + Prisma + Express.js + PostgreSQL + Typescript. The frontend is built with Next.js (App Router) and TypeScript, providing both static and dynamic rendering with ISR (Incremental Static Regeneration) for public content and SSR (Server-Side Rendering) for authenticated dashboard pages. It communicates with the backend via REST APIs built using Express.js and Prisma, deployed separately.
 
+### Live Link : [SHAHNAWAZ-SAZID-PORTFOLIO](https://shahnawaz-sazid.vercel.app/)
+
+### Backend Repository : [BACKEND-REPO](https://github.com/Sazid60/Shahnawaz-Sazid-Portfolio-Server)
+
 ### Key Features
 
 #### Public Features

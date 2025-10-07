@@ -5,7 +5,7 @@ const HomeExperience = async () => {
   let experiences: any[] = [];
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/experience`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/experience`, { next: {tags: ["EXPERIENCES"] }} );
 
     if (!res.ok) {
       console.error("Failed to fetch experiences:", res.status, res.statusText);
