@@ -5,7 +5,9 @@ const HomeSkills = async () => {
   let skills: any[] = [];
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/skill`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/skill`, {
+      next: {tags: ["SKILLS"] }
+    });
 
     if (!res.ok) {
       console.error("Failed to fetch skills:", res.status, res.statusText);

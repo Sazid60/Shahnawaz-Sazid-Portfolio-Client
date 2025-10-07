@@ -5,7 +5,7 @@ const HomeEducation = async () => {
   let education: any[] = [];
 
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/academic`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/academic`, {next: {tags: ["ACADEMICS"] }});
 
     if (!res.ok) {
       console.error("Failed to fetch education:", res.status, res.statusText);
