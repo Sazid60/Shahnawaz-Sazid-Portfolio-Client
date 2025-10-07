@@ -31,7 +31,7 @@ export default function DashExperienceCard({ experiences }: DashExperienceCardPr
   };
 
   return (
-    <div className="grid gap-8 md:grid-cols-1 xl:grid-cols-3">
+    <div className="grid gap-8 md:grid-cols-1 xl:grid-cols-3 mb-8">
       {experiences.map((exp) => (
         <div
           key={exp.id}

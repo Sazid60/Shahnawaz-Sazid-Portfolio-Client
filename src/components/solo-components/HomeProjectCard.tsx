@@ -57,7 +57,7 @@ export default function HomeProjectCard({ projects }: DashProjectCardProps) {
           </div>
 
           <div className="md:p-3">
-            <h1 className="text-left text-xl lg:text-2xl font-bold mt-3 md:mt-6">
+            <h1 className="text-left text-md md:text-lg font-bold mt-3 md:mt-6">
               <span className="text-violet-600">{project.title.split("-")[0]}</span>
               {project.title.includes("-") && " - "}
               <span className="text-white">{project.title.split("-")[1]}</span>

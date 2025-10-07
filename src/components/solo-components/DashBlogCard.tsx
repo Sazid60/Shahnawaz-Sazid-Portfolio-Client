@@ -27,7 +27,7 @@ export default function DashBlogCard({ blogs }: DashBlogCardProps) {
   };
 
   return (
-    <div className="grid gap-8 grid-cols-1 xl:grid-cols-3">
+    <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mb-8">
       {blogs.map((blog) => (
         <div
           key={blog.id}
@@ -58,7 +58,7 @@ export default function DashBlogCard({ blogs }: DashBlogCardProps) {
           )}
 
           <div className="mt-3 flex flex-col flex-1">
-            <h3 className="font-bold text-white text-lg mb-3 line-clamp-2">
+            <h3 className="font-bold text-white text-md md:text-lg mb-3 line-clamp-2">
               {blog.title}
             </h3>
 
